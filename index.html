@@ -1,41 +1,213 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dany De La Rosa — Software development, data processing, and systems engineering.">
+    <link rel="icon" type="image/svg+xml" href="./assets/graphics/Icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ledger&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <title>Dany De La Rosa | Developer</title>
 </head>
 <body>
-    <nav>
-        <img src="headerimg.png" alt="Header Image">
-        <ul id="navigation">
-            <li><a href="#">About Me</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <a class="skip-link" href="#main">Skip to content</a>
     <div id="wrapper">
-        <div class="column">
-            <p id="aboutMeText">
-                I'm a creator at heart who found an unexpected medium in software.
+        <!-- Navigation -->
+        <header class="site-header">
+            <nav class="navigation" aria-label="Main navigation">
+                <a class="nav-brand" href="#home"><img src="./assets/graphics/Icon.svg" alt="" class="nav-logo"><span>Dany De La Rosa</span></a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#aboutMe">About Me</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <span class="nav-motto">
+                        Build. Create. Impact.
+                    </span>
+                    <button id="darkmodeToggle" type="button" aria-label="Toggle dark mode">
+                        <img src="./assets/graphics/darkmodeicon.svg" alt="">
+                    </button>
+                </div>
+            </nav>
+        </header>
 
-                I was born and raised in Southwest Michigan in a first-generation Latino family. Growing up, I often felt caught between different worlds, and I found a lot of comfort in drawing, anime, video games, nonfiction books, and other creative outlets. My first introduced to programming was toward the end of high school, in an elective Python class. At the time I figured I'd eventually pursue something more traditionally creative, like art or music.
+        <main id="main">
+            <!-- Hero -->
+            <section id="home" class="hero">
+                <div class="hero-content">
+                    <p class="eyebrow"> SOFTWARE <span>·</span> DATA <span>·</span> SYSTEMS </p>
+                    <h1> Thoughtful systems. <span>Creative solutions.</span></h1>
+                    <p class="hero-description">
+                        Hi! I'm Dany De La Rosa — a creator at heart
+                        who found an unexpected medium in software.
+                    </p>
+                    <a class="button button-primary" href="#projects"> Explore my work <img src="./assets/graphics/linkArrow.svg" alt=""></a>
+                </div>
+                <div class="hero-artwork"><img src="./assets/graphics/block_rose_graphic.svg" alt=""></div>
+                <div class="hero-decoration" aria-hidden="true">
+                    <span>01</span><span>DESIGN · DEVELOP · REFINE</span>
+                </div>
+            </section>
 
-                Years later, I found myself in technology and discovered something I hadn't appreciated when I was younger: <b>software development is a creative discipline.</b> Like art, it gives you principles and constraints to work within while still leaving room to think, experiment, and create. Two people can approach the same problem using the same engineering principles and arrive at completely different solutions.
+            <!-- Selected Projects -->
+            <section id="projects" class="projects-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">WHAT I'VE BEEN BUILDING</p>
+                        <h2>Selected projects<span>.</span></h2>
+                    </div>
+                    <p class="section-description">
+                        Exploring the intersection of software, data, and thoughtful system design.
+                    </p>
+                </div>
 
-                My interest in backend development grew naturally through my work. In an earlier role, I started writing scripts to solve problems and became increasingly interested in what was happening underneath the code—how queries execute, how applications should interact with databases, and how different parts of a system should be separated. I found myself thinking beyond <b>“Does this work?”</b> and more about <b>“How should this work?”</b>
+                <!-- Featured Project -->
+                <article class="project-feature">
+                    <div class="project-information">
+                        <p class="project-number">01 / FEATURED PROJECT</p>
+                        <h3>Court Case Management System</h3>
+                        <p>
+                            Exploring the architecture behind a modern
+                            case management system, from domain modeling
+                            and identity resolution to relational data
+                            design and backend development.
+                        </p>
+                        <ul class="project-tags">
+                            <li>PostgreSQL</li>
+                            <li>Express</li>
+                            <li>Angular</li>
+                            <li>Domain Modeling</li>
+                        </ul>
+                        <!-- TODO: Replace link with dedicated project link once done -->
+                        <a href="#" class="project-link">
+                            View project details
+                            <img src="./assets/graphics/linkArrow.svg" alt="">
+                        </a>
+                    </div>
+                    <div class="project-visual">
+                        <!-- TODO: Replace this with a screenshot of a demo -->
+                        <img src="./assets/images/cms-preview.png" alt="Court case management system project preview">
+                    </div>
+                </article>
 
-                That mindset has continued into my current role as an Application Support Analyst, where I've gained hands-on experience with JavaScript, BIRT reporting, SQL, and SSMS, including thinking about query performance and the impact of my work on production systems. Over the past four years, I've progressed from contract PC Replacement Technician to Help Desk, Application Support Specialist, and now Application Support Analyst. Each step has given me another layer of technical experience and pushed me closer to the kind of engineering work I want to build a career around.
+                <!-- Supporting Projects -->
+                <div class="project-grid">
+                    <article class="project-card">
+                        <p class="project-number">02 / DATA ENGINEERING</p>
+                        <h3>Data Pipeline & ETL Workflows</h3>
+                        <p>Automated data processing workflows using Python and SQL.</p>
+                        <ul class="project-tags">
+                            <li>Python</li>
+                            <li>SQL</li>
+                            <li>ETL</li>
+                        </ul>
+                        <a href="#" class="project-link"> View project <img src="./assets/graphics/linkArrow.svg" alt=""></a>
+                    </article>
+                    <article class="project-card">
+                        <p class="project-number">03 / SOFTWARE DEVELOPMENT</p>
+                        <h3>Project to be determined</h3>
+                        <p> This project is under construction. But not to worry, it will be completed soon!</p>
+                        <ul class="project-tags">
+                            <li>Technology</li>
+                            <li>Technology</li>
+                        </ul>
+                        <a href="#" class="project-link"> View project <img src="./assets/graphics/linkArrow.svg" alt=""></a>
+                    </article>
+                </div>
+            </section>
 
-                I wouldn't call technology a passion of mine. But I've developed a genuine interest in the craft of building and understanding software, and I've realized that the same part of me that once wanted to create through art now enjoys creating through technical solutions.
+            <!-- About Me -->
+            <section id="aboutMe" class="about-section">
+                <div class="about-heading">
+                    <p class="eyebrow">THE GUY BEHIND THE CODE</p>
+                    <h2>A little about me<span>.</span></h2>
+                </div>
+                <div class="about-layout">
+                    <div class="about-visual">
+                        <img class="about-portrait" src="./assets/graphics/portrait.svg" alt="Illustrated portrait of Dany De La Rosa">
+                        <img class="about-decoration" src="./assets/graphics/block_rose_graphic.svg" alt="">
+                    </div>
+                    <div class="about-content">
+                        <p>I'm a creator at heart who found an unexpected medium in software.</p>
+                        <p>
+                            I was born and raised in Southwest Michiganin a first-generation Latino family. Growing up, I often felt caught between different
+                            worlds, and I found a lot of comfort in drawing, anime, video games, nonfiction books, and other creative outlets. My first introduction 
+                            to programming was toward the end of high school, in an elective Python class. At the time I figured I'd eventually pursue something 
+                            more traditionally creative, like art or music.
+                        </p>
+                        <p>
+                            Years later, I found myself in technology and discovered something I hadn't appreciated when I was younger: <strong>software development 
+                            is a creative discipline.</strong> Like art, it gives you principles and constraints to work within while still leaving room to think,
+                            experiment, and create. Two people can approach the same problem using the same engineering principles and arrive at completely different solutions.
+                        </p>
+                        <p>
+                            My interest in backend development grew naturally through my work. In an earlier role, I started writing scripts to solve problems and 
+                            became increasingly interested in what was happening underneath the code — how queries execute, how applications should interact with 
+                            databases, and how different parts of a system should be separated. I found myself thinking beyond <strong>“Does this work?”</strong> 
+                            and more about <strong>“How should this work?”</strong>
+                        </p>
+                        <p>
+                            That mindset has continued into my current role as an Application Support Analyst, where I've gained hands-on experience with JavaScript, 
+                            BIRT reporting, SQL, and SSMS, including thinking about query performance and the impact of my work on production systems. Over the past 
+                            four years, I've progressed from contract PC Replacement Technician to Help Desk, Application Support Specialist, and now Application Support 
+                            Analyst. Each step has given me another layer of technical experience and pushed me closer to the kind of engineering work I want to build a career around.
+                        </p>
+                        <p>
+                            I wouldn't call technology a passion of mine. But I've developed a genuine interest in the craft of building and understanding software, 
+                            and I've realized that the same part of me that once wanted to create through art now enjoys creating through technical solutions.
+                        </p>
+                        <p class="about-conclusion">
+                            I'm still a creator at heart. Software just happens to be one of my favorite mediums.
+                        </p>
+                    </div>
+                </div>
+            </section>
 
-                <b>I'm still a creator at heart. Software just happens to be one of my favorite mediums.</b>
+            <!-- Contact -->
+            <section id="contact" class="contact-section">
+                <p class="eyebrow">LIKE WHAT YOU SEE?</p>
+                <h2>Let's make something!</h2>
+                <p>Interested in collaborating or discussing an opportunity? I'd love to hear from you.</p>
+                <a href="mailto:dev.dany@outlook.com" class="button button-primary"> 
+                    Get in touch
+                    <img src="./assets/graphics/linkArrow.svg" alt="">
+                </a>
+            </section>
+        </main>
 
-            </p>
-        </div>
+        <!-- Footer -->
+        <footer class="site-footer">
+            <a class="footer-brand" href="#home">
+                <img src="./assets/graphics/Icon.svg" alt="">
+                <span>Dany De La Rosa</span>
+            </a>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#aboutMe">About Me</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="mailto:dev.dany@outlook.com" aria-label="Email">
+                    <img src="./assets/graphics/emailIcon.svg" alt="">
+                </a>
+                <a href="https://www.linkedin.com/"
+                   aria-label="LinkedIn">
+                    <img src="./assets/graphics/linkedInIcon.svg" alt="">
+                </a>
+                <a href="https://github.com/"
+                   aria-label="GitHub">
+                    <img src="./assets/graphics/githubIcon.svg" alt="">
+                </a>
+            </div>
+            <p class="copyright"> Copyright &copy; 2026 Dany De La Rosa </p>
+        </footer>
     </div>
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>
