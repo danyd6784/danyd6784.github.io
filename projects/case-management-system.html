@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Case Management System | Dany De La Rosa</title>
+
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="./index.html">Dany De La Rosa</a>
+            <a href="./index.html#projects">Back to Projects</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- PROJECT INTRODUCTION -->
+        <section id="project-intro">
+
+            <p>Featured Project / Backend Development</p>
+
+            <h1>Case Management System</h1>
+
+            <p>
+                Exploring how software systems can manage person identities
+                when records contain incomplete, inconsistent, or potentially
+                duplicated information.
+            </p>
+
+            <ul>
+                <li>Node.js</li>
+                <li>Express</li>
+                <li>PostgreSQL</li>
+                <li>Docker</li>
+                <li>JavaScript</li>
+            </ul>
+
+            <a href="GITHUB_REPOSITORY_URL">View Source Code</a>
+
+        </section>
+
+
+        <!-- THE PROBLEM -->
+        <section id="problem">
+
+            <h2>The Problem</h2>
+
+            <p>
+                In a case management system, the same individual may appear
+                across multiple cases and records. However, names and personal
+                information are not always consistent.
+            </p>
+
+            <p>
+                A person might be recorded as "John Doe" in one case and
+                "Jon Doe" in another. Are these two records describing the
+                same individual?
+            </p>
+
+            <p>
+                Similar names alone are not enough to establish identity.
+                Automatically combining records could result in incorrectly
+                associating individuals with cases.
+            </p>
+
+            <!-- PLACEHOLDER: Identity matching scenario illustration -->
+            <figure>
+                <img src="./assets/img/identity-resolution.png"
+                     alt="Diagram illustrating two potentially matching person records">
+                <figcaption>
+                    Potential identity match between two source records.
+                </figcaption>
+            </figure>
+
+        </section>
+
+
+        <!-- DESIGN PHILOSOPHY -->
+        <section id="design-philosophy">
+
+            <h2>Design Philosophy</h2>
+
+            <blockquote>
+                Do not make the database more certain than the evidence allows.
+            </blockquote>
+
+            <p>
+                The system is designed to preserve the distinction between
+                information reported by a source and the canonical identity
+                maintained by the application.
+            </p>
+
+            <p>
+                Rather than automatically merging similar records, the system
+                retains source information and supports evidence-based identity
+                matching and review.
+            </p>
+
+        </section>
+
+
+        <!-- DOMAIN MODEL -->
+        <section id="domain-model">
+
+            <h2>Domain Modeling</h2>
+
+            <p>
+                The data model separates several concepts that are often
+                treated as though they represent the same thing.
+            </p>
+
+            <h3>Canonical Person</h3>
+            <p>
+                Represents an internally recognized individual within the
+                system.
+            </p>
+
+            <h3>Person Record</h3>
+            <p>
+                Preserves information reported by an individual source,
+                including the name and other details as originally provided.
+            </p>
+
+            <h3>Identity Matching</h3>
+            <p>
+                Represents potential relationships between records and
+                preserves the decisions made during identity review.
+            </p>
+
+            <h3>Case Participation</h3>
+            <p>
+                Represents an individual's involvement in a case and the role
+                they hold during a particular period.
+            </p>
+
+            <!-- PLACEHOLDER: ERD -->
+            <figure>
+                <img src="./assets/img/domain-model.png"
+                     alt="Entity relationship diagram for the case management system">
+                <figcaption>
+                    Entity relationship diagram.
+                </figcaption>
+            </figure>
+
+        </section>
+
+
+        <!-- SYSTEM ARCHITECTURE -->
+        <section id="architecture">
+
+            <h2>System Architecture</h2>
+
+            <p>
+                The application uses a layered backend architecture to
+                separate HTTP handling, business logic, and database access.
+            </p>
+
+            <ul>
+                <li><strong>Routes:</strong> Define available API endpoints.</li>
+                <li><strong>Controllers:</strong> Handle incoming requests and responses.</li>
+                <li><strong>Services:</strong> Enforce application-level business rules.</li>
+                <li><strong>Repositories:</strong> Handle database queries.</li>
+                <li><strong>Database:</strong> Persist application data.</li>
+            </ul>
+
+            <!-- PLACEHOLDER: Architecture diagram -->
+            <figure>
+                <img src="./assets/img/system-architecture.png"
+                     alt="Diagram showing the application architecture">
+                <figcaption>
+                    Application architecture and request flow.
+                </figcaption>
+            </figure>
+
+        </section>
+
+
+        <!-- IMPLEMENTATION -->
+        <section id="implementation">
+
+            <h2>Implementation</h2>
+
+            <p>
+                The project is being developed incrementally, with an emphasis
+                on building and testing the backend functionality.
+            </p>
+
+            <h3>API Development</h3>
+            <p>
+                Implementing REST endpoints for managing canonical person
+                records and supporting search and retrieval operations.
+            </p>
+
+            <h3>Database Integration</h3>
+            <p>
+                Connecting the application to PostgreSQL and implementing
+                relational constraints to maintain data integrity.
+            </p>
+
+            <h3>Frontend Integration</h3>
+            <p>
+                Building a lightweight interface that communicates with the
+                API and allows users to interact with person records.
+            </p>
+
+            <!-- PLACEHOLDER: Application screenshot -->
+            <figure>
+                <img src="./assets/img/application-preview.png"
+                     alt="Screenshot of the case management application">
+                <figcaption>
+                    Application interface preview.
+                </figcaption>
+            </figure>
+
+        </section>
+
+
+        <!-- ENGINEERING DECISIONS -->
+        <section id="engineering-decisions">
+
+            <h2>Engineering Decisions & Challenges</h2>
+
+            <article>
+                <h3>Why not automatically merge similar names?</h3>
+                <p>
+                    Document the reasoning behind preserving uncertain
+                    identities instead of relying exclusively on name matching.
+                </p>
+            </article>
+
+            <article>
+                <h3>Why separate source records from canonical identities?</h3>
+                <p>
+                    Explain how this separation preserves original information
+                    while allowing the system to recognize individuals.
+                </p>
+            </article>
+
+            <article>
+                <h3>Why preserve identity review decisions?</h3>
+                <p>
+                    Explain how retaining previous decisions helps maintain
+                    traceability and prevents repeated false-match reviews.
+                </p>
+            </article>
+
+        </section>
+
+
+        <!-- PROJECT STATUS -->
+        <section id="project-status">
+
+            <h2>Project Status & Future Development</h2>
+
+            <h3>Implemented</h3>
+            <ul>
+                <li>Domain model and relational database design</li>
+                <li>Initial Express API architecture</li>
+                <li>PostgreSQL integration</li>
+                <li>Initial canonical person retrieval</li>
+            </ul>
+
+            <h3>In Progress</h3>
+            <ul>
+                <li>Canonical person CRUD operations</li>
+                <li>Frontend API integration</li>
+                <li>Request validation and error handling</li>
+            </ul>
+
+            <h3>Planned</h3>
+            <ul>
+                <li>Identity matching and review workflows</li>
+                <li>Additional automated and integration tests</li>
+                <li>Further application security and authorization</li>
+            </ul>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>
+            Designed and developed by Dany De La Rosa.
+        </p>
+        <a href="./index.html">Return to Portfolio</a>
+    </footer>
+
+</body>
+</html>
