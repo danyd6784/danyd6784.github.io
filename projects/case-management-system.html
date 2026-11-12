@@ -54,19 +54,22 @@
             <p>
                 In a case management system, the same individual may appear
                 across multiple cases and records. However, names and personal
-                information are not always consistent.
+                information are not always consistent for a variety of different
+                reasons.
             </p>
 
             <p>
                 A person might be recorded as "John Doe" in one case and
-                "Jon Doe" in another. Are these two records describing the
-                same individual?
+                "Jon Doe" in another due to clerical error, erroneous information
+                given by a defendant. The question is how do we determine that these 
+                two records describe the same individual?
             </p>
 
             <p>
-                Similar names alone are not enough to establish identity.
-                Automatically combining records could result in incorrectly
-                associating individuals with cases.
+                Similar names alone are not enough to establish identity. Which
+                causes a pain when cleaning up data for reporting purposes, and 
+                auditing. Automatically combining records could result in 
+                incorrectly associating individuals with cases.
             </p>
 
             <!-- PLACEHOLDER: Identity matching scenario illustration -->
@@ -83,25 +86,20 @@
 
         <!-- DESIGN PHILOSOPHY -->
         <section id="design-philosophy">
-
             <h2>Design Philosophy</h2>
-
             <blockquote>
                 Do not make the database more certain than the evidence allows.
             </blockquote>
-
             <p>
                 The system is designed to preserve the distinction between
                 information reported by a source and the canonical identity
                 maintained by the application.
             </p>
-
             <p>
                 Rather than automatically merging similar records, the system
                 retains source information and supports evidence-based identity
                 matching and review.
             </p>
-
         </section>
 
 
@@ -109,36 +107,30 @@
         <section id="domain-model">
 
             <h2>Domain Modeling</h2>
-
             <p>
                 The data model separates several concepts that are often
                 treated as though they represent the same thing.
             </p>
-
             <h3>Canonical Person</h3>
             <p>
                 Represents an internally recognized individual within the
                 system.
             </p>
-
             <h3>Person Record</h3>
             <p>
                 Preserves information reported by an individual source,
                 including the name and other details as originally provided.
             </p>
-
             <h3>Identity Matching</h3>
             <p>
                 Represents potential relationships between records and
                 preserves the decisions made during identity review.
             </p>
-
             <h3>Case Participation</h3>
             <p>
                 Represents an individual's involvement in a case and the role
                 they hold during a particular period.
             </p>
-
             <!-- PLACEHOLDER: ERD -->
             <figure>
                 <img src="./assets/img/domain-model.png"
@@ -150,17 +142,13 @@
 
         </section>
 
-
         <!-- SYSTEM ARCHITECTURE -->
         <section id="architecture">
-
             <h2>System Architecture</h2>
-
             <p>
                 The application uses a layered backend architecture to
                 separate HTTP handling, business logic, and database access.
             </p>
-
             <ul>
                 <li><strong>Routes:</strong> Define available API endpoints.</li>
                 <li><strong>Controllers:</strong> Handle incoming requests and responses.</li>
@@ -168,7 +156,6 @@
                 <li><strong>Repositories:</strong> Handle database queries.</li>
                 <li><strong>Database:</strong> Persist application data.</li>
             </ul>
-
             <!-- PLACEHOLDER: Architecture diagram -->
             <figure>
                 <img src="./assets/img/system-architecture.png"
@@ -179,30 +166,23 @@
             </figure>
 
         </section>
-
-
         <!-- IMPLEMENTATION -->
         <section id="implementation">
-
             <h2>Implementation</h2>
-
             <p>
                 The project is being developed incrementally, with an emphasis
                 on building and testing the backend functionality.
             </p>
-
             <h3>API Development</h3>
             <p>
                 Implementing REST endpoints for managing canonical person
                 records and supporting search and retrieval operations.
             </p>
-
             <h3>Database Integration</h3>
             <p>
                 Connecting the application to PostgreSQL and implementing
                 relational constraints to maintain data integrity.
             </p>
-
             <h3>Frontend Integration</h3>
             <p>
                 Building a lightweight interface that communicates with the
@@ -219,34 +199,80 @@
             </figure>
 
         </section>
-
-
         <!-- ENGINEERING DECISIONS -->
         <section id="engineering-decisions">
-
             <h2>Engineering Decisions & Challenges</h2>
-
             <article>
                 <h3>Why not automatically merge similar names?</h3>
                 <p>
-                    Document the reasoning behind preserving uncertain
-                    identities instead of relying exclusively on name matching.
+                    Case management systems routinely encounter situations where different 
+                    individuals share similar, or even identical, personal information.
+
+                    Consider two twin brothers, Johnathan Marcus Doe and Johnathan 
+                    Dwayne Doe. They share the same date of birth and residential 
+                    address. Both are subsequently entered into the system under 
+                    the name John Doe for two unrelated juvenile offenses.
+
+                    A matching process that relies heavily on names, dates of birth, 
+                    or residential addresses could incorrectly associate these records 
+                    with the same individual.
+
+                    Although unique identifiers, such as Social Security or driver's license 
+                    numbers, can provide stronger evidence of identity, they are not always 
+                    available or guaranteed to be accurate.
+
+                    For this reason, the system treats matching information as evidence 
+                    for evaluating potential relationships between records rather than as 
+                    automatic justification for merging them. Identity associations should 
+                    be supported by sufficient evidence and, where necessary, human review.
                 </p>
             </article>
 
             <article>
                 <h3>Why separate source records from canonical identities?</h3>
                 <p>
-                    Explain how this separation preserves original information
-                    while allowing the system to recognize individuals.
+                    Auditability is a primary concern in case management systems. These systems 
+                    must preserve information as it was originally reported, rather than simply 
+                    maintaining the most recent version of an individual's information.
+
+                    To support this, the data model distinguishes between a canonical person identity 
+                    maintained by the application and the individual records that contain 
+                    information reported by various sources.
+
+                    A canonical person represents the system's recognition of an individual, while 
+                    source records preserve the information provided about that individual, 
+                    including names, addresses, and other identifying details.
+
+                    This separation allows the system to maintain a historical record of reported 
+                    information without overwriting previous values whenever new information 
+                    becomes available.
+
+                    It also allows multiple source records to be associated with a canonical person 
+                    without losing the original context in which those records were created.
                 </p>
             </article>
 
             <article>
                 <h3>Why preserve identity review decisions?</h3>
                 <p>
-                    Explain how retaining previous decisions helps maintain
-                    traceability and prevents repeated false-match reviews.
+                    Identity resolution is not always straightforward. Unique identifiers may be 
+                    unavailable, and available information may not provide enough certainty to 
+                    establish whether two records represent the same individual.
+
+                    As a result, authorized personnel may need to review potential matches and make 
+                    decisions about whether records should be associated with an existing canonical 
+                    person.
+
+                    These decisions should never occur without accountability or leave no trace of 
+                    the reasoning behind them.
+
+                    The system therefore preserves identity review history, including the decision 
+                    made, the individual responsible for the review, when the decision occurred, 
+                    and the justification provided.
+
+                    Retaining both positive and negative match decisions provides an audit trail, 
+                    helps prevent repeated evaluation of previously reviewed matches, and makes 
+                    identity resolution more transparent and accountable.
                 </p>
             </article>
 
